@@ -1,0 +1,30 @@
+@startuml
+skinparam componentStyle rectangle
+rectangle "Client" as Client
+node "API Gateway" as GW {
+ [Gateway PEP] as GWPEP
+ [OPA Sidecar] as GWOPA
+}
+node "Service A Pod" as SvcA {
+ [Service A] as SA
+ [PEP A] as PEPA
+ [Attribute Resolver Chain] as AR
+ [OPA Sidecar] as OPA_A
+}
+node "Service B Pod" as SvcB {
+ [Service B] as SB
+ [PEP B] as PEPB
+ [OPA Sidecar] as OPA_B
+}
+node "Policy Bundle Server" as PBS
+node "IdP (OIDC)" as IdP
+Client --> GWPEP : HTTPS (JWT)
+GWPEP --> GWOPA : authz query
+GWPEP --> SA : forward on allow
+SA --> PEPA : internal authz check (optional)
+PEPA --> AR : resolve attributes
+AR --> OPA_A : PDP query
+GWOPA --> PBS : pull bundles (poll)
+OPA_A --> PBS : pull bundles (poll)
+Client --> IdP : login/token
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+interface PolicyDecisionPoint {
+ +Decision evaluate(action, resourceType, context)
+}
+class OpaPolicyDecisionPoint
+class AttributeResolver
+class AttributeResolverChain
+class AbacAuthorizationManager
+PolicyDecisionPoint <|.. OpaPolicyDecisionPoint
+AttributeResolverChain o-- AttributeResolver
+AbacAuthorizationManager ..> PolicyDecisionPoint
+AbacAuthorizationManager ..> AttributeResolverChain
+@enduml
