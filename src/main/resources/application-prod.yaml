@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://db:5432/appdb
+    username: app
+    password: app
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc.time_zone: UTC
+
+flyway:
+  enabled: false
+  locations: classpath:db/migration
+
+logging:
+  level:
+    org.springframework.security.oauth2: DEBUG
+    org.springframework.security.authentication: DEBUG

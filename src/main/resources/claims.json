@@ -1,0 +1,6 @@
+{
+  "sub": "user-sub-1",
+  "roles": ["doc_reader"],
+  "iss": "http://local-dev",
+  "aud": "abac-strangler"
+}
