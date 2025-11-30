@@ -21,3 +21,4 @@ logging:
   level:
     org.springframework.security.oauth2: DEBUG
     org.springframework.security.authentication: DEBUG
+    com.orban.abac_prototype: INFO

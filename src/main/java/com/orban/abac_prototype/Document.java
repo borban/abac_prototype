@@ -5,5 +5,21 @@ import jakarta.persistence.*; import java.util.*;
 public class Document {
     @Id private UUID id;
     private String title; private String ownerSub; private String classification;
-// getters/setters
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getOwnerSub() {
+        return ownerSub;
+    }
+
+    public String getClassification() {
+        return classification;
+    }
+    // getters/setters
 }
